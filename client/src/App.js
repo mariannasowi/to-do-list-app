@@ -1,6 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
-import uuid from 'uuid';
+import { v4 } from 'uuid';
 
 class App extends React.Component {
   state = {
@@ -43,7 +43,7 @@ class App extends React.Component {
 
   submitForm(event) {
     event.preventDefault();
-    const id = uuid();
+    const id = v4();
     this.socket.emit('addTask', {id: id, task: this.state.taskName});
     this.addTask({id: id, task: this.state.taskName});
     this.updateTaskName('');
